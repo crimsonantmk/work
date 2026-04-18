@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3-Day Workout Plan</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0a0a0a;
+    --card: #111;
+    --border: #1e1e1e;
+    --text: #f0ece4;
+    --muted: #666;
+    --day1: #c8f55a;
+    --day2: #5af5c8;
+    --day3: #f55a8a;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    padding: 32px 20px 60px;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  header h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(52px, 12vw, 96px);
+    letter-spacing: 4px;
+    line-height: 0.9;
+    color: var(--text);
+  }
+
+  header p {
+    color: var(--muted);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 12px;
+  }
+
+  .days {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .day-card {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .day-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .day-badge {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    padding: 4px 10px;
+    border-radius: 2px;
+    background: #1a1a1a;
+    white-space: nowrap;
+  }
+
+  .day-1 .day-badge { color: var(--day1); border: 1px solid var(--day1); }
+  .day-2 .day-badge { color: var(--day2); border: 1px solid var(--day2); }
+  .day-3 .day-badge { color: var(--day3); border: 1px solid var(--day3); }
+
+  .day-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 2px;
+  }
+
+  .day-1 .day-title { color: var(--day1); }
+  .day-2 .day-title { color: var(--day2); }
+  .day-3 .day-title { color: var(--day3); }
+
+  .day-focus {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-left: auto;
+  }
+
+  .section {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section:last-child { border-bottom: none; }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  .exercises {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .exercise {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: #161616;
+    border-radius: 3px;
+    border-left: 2px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .day-1 .exercise:hover { border-left-color: var(--day1); }
+  .day-2 .exercise:hover { border-left-color: var(--day2); }
+  .day-3 .exercise:hover { border-left-color: var(--day3); }
+
+  .ex-name {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .ex-note {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  .ex-sets {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 15px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    text-align: right;
+  }
+
+  .day-1 .ex-sets { color: var(--day1); }
+  .day-2 .ex-sets { color: var(--day2); }
+  .day-3 .ex-sets { color: var(--day3); }
+
+  .tip-box {
+    padding: 16px 24px;
+    background: #141414;
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .tip-box strong {
+    color: var(--text);
+  }
+
+  footer {
+    text-align: center;
+    margin-top: 48px;
+    font-size: 11px;
+    color: #333;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>3-DAY<br>PROGRAM</h1>
+  <p>Full body · 3 days per week · No complex movements</p>
+</header>
+
+<div class="days">
+
+  <!-- DAY 1 -->
+  <div class="day-card day-1">
+    <div class="day-header">
+      <span class="day-badge">DAY 01</span>
+      <span class="day-title">LEG DAY</span>
+      <span class="day-focus">Lower Body Focus</span>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Warm-Up — 5 min</div>
+      <div class="exercises">
+        <div class="exercise">
+          <div><div class="ex-name">Bodyweight Squats</div><div class="ex-note">Light, just to get blood moving</div></div>
+          <div class="ex-sets">2 × 15</div>
+        </div>
+        <div class="exercise">
+          <div><div class="ex-name">Leg Swings</div><div class="ex-note">Forward + lateral, 10 each side</div></div>
+          <div class="ex-sets">1 × 20</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Main Work — Legs</div>
+      <div class="exercises">
+        <div class="exercise">
+          <div><div class="ex-name">Barbell Back Squat</div><div class="ex-note">Feet shoulder-width, chest up, drive through heels</div></div>
+          <div class="ex-sets">4 × 8–10</div>
+        </div>
+        <div class="exercise">
+          <div><div class="ex-name">Romanian Deadlift</div><div class="ex-note">Hinge at hips, soft knee, bar close to legs</div></div>
+          <div class="ex-sets">3 × 10–12</div>
+        </div>
+        <div class="exercise">
+          <div><div class="ex-name">Walking Lunges</div><div class="ex-note">Long stride, back knee near floor</div></div>
+          <div class="ex-sets">3 × 12 each</div>
+        </div>
+        <div class="exercise">
+          <div><div class="ex-name">Leg Press</div><div class="ex-note">Feet hip-width, don't lock knees at top</div></div>
+          <div class="ex-sets">3 × 12–15</div>
+        </div>
+        <div class="exercise">
+          <div><div class="ex-name">Standing Calf Raise</div><div class="ex-note">Full range — stretch at bottom, squeeze at top</div></div>
+          <div class="ex-sets">4 × 15–20</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Full-Body Finisher</div>
+      <div class="exercises">
+        <div class="exercise">
+          <div><div class="ex-name">Plank</div><div class="ex-note">Glutes tight, don't sag the hips</div></div>
+          <div class="ex-sets">3 × 45 sec</div>
+        </div>
+        <div class="exercise">
+          <div><div class="ex-name">Dumbbell Shoulder Press</div><div class="ex-note">Seated or standing, controlled tempo</div></div>
+          <div class="ex-sets">2 × 12</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <strong>Tip:</strong> Rest 90–120 sec between squat/deadlift sets. 60 sec for everything else. Prioritize depth on squats over load.
+    </div>
+  </div>
+
+  <!-- DAY 2 -->
+  <div class="day-card day-2">
+    <div class="day-header">
+      <span class="day-badge">DAY 02</span>
+      <span class="day-title">ARM DAY</span>
+      <span class="day-focus">Biceps · Triceps · Shoulders</span>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Warm-Up — 5 min</div>
+      <div class="exercises">
+        <div class="exercise">
+          <div><div class="ex-name">Arm Circles</div><div class="ex-note">Small to large, both directions</div></div>
+          <div class="ex-sets">2 × 30 sec</div>
+        </div>
+        <div class="exercise">
+          <div><div class="ex-name">Band Pull-Aparts</div><div class="ex-note">Or towel stretch if no band</div></div>
+          <div class="ex-sets">2 × 15</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Main Work — Arms & Shoulders</div>
+      <div class="exercises">
+        <div class="exercise">
+          <div><div class="ex-name">Barbell or EZ-Bar Curl</div><div class="ex-note">Elbows pinned to sides, no swinging</div></div>
+          <div class="ex-sets">4 × 10–12</div>
+        </div>
+        <div class="exercise">
+          <div><div class="ex-name">Overhead Tricep Extension</div><div class="ex-note">Dumbbell or cable, keep elbows tight</div></div>
+          <div class="ex-sets">4 × 10–12</div>
+        </div>
+        <div class="exercise">
+          <div><div class="ex-name">Hammer Curl</div><div class="ex-note">Neutral grip, targets brachialis for arm thickness</div></div>
+          <div class="ex-sets">3 × 12</div>
+        </div>
+        <div class="exercise">
+          <div><div class="ex-name">Tricep Pushdown (cable or band)</div><div class="ex-note">Full extension at bottom, squeeze hard</div></div>
+          <div class="ex-sets">3 × 12–15</div>
+        </div>
+        <div class="exercise">
+          <div><div class="ex-name">Lateral Raises</div><div class="ex-note">Light weight, slight forward lean, lead with elbow</div></div>
+          <div class="ex-sets">4 × 15</div>
+        </div>
+        <div class="exercise">
+          <div><div class="ex-name">Face Pulls</div><div class="ex-note">Cable at face height, pull to forehead, elbows high</div></div>
+          <div class="ex-sets">3 × 15</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Full-Body Finisher</div>
+      <div class="exercises">
+        <div class="exercise">
+          <div><div class="ex-name">Goblet Squat</div><div class="ex-note">Dumbbell at chest, upright torso</div></div>
+          <div class="ex-sets">2 × 15</div>
+        </div>
+        <div class="exercise">
+          <div><div class="ex-name">Ab Crunch or Leg Raise</div><div class="ex-note">Slow and controlled, no momentum</div></div>
+          <div class="ex-sets">3 × 15</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <strong>Tip:</strong> Superset curls + tricep work (back to back, short rest) to save time and increase pump. Keep weights moderate — arms respond better to feel than load.
+    </div>
+  </div>
+
+  <!-- DAY 3 -->
+  <div class="day-card day-3">
+    <div class="day-header">
+      <span class="day-badge">DAY 03</span>
+      <span class="day-title">CHEST & BACK</span>
+      <span class="day-focus">Push · Pull Balance</span>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Warm-Up — 5 min</div>
+      <div class="exercises">
+        <div class="exercise">
+          <div><div class="ex-name">Push-Ups</div><div class="ex-note">Easy pace, open the chest</div></div>
+          <div class="ex-sets">2 × 10</div>
+        </div>
+        <div class="exercise">
+          <div><div class="ex-name">Cat-Cow + Thoracic Rotation</div><div class="ex-note">Mobilize the spine before loading it</div></div>
+          <div class="ex-sets">2 × 10</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Main Work — Chest & Back</div>
+      <div class="exercises">
+        <div class="exercise">
+          <div><div class="ex-name">Barbell Bench Press</div><div class="ex-note">Medium grip, touch chest, don't bounce</div></div>
+          <div class="ex-sets">4 × 8–10</div>
+        </div>
+        <div class="exercise">
+          <div><div class="ex-name">Bent-Over Barbell Row</div><div class="ex-note">Hinge 45°, pull to lower chest, squeeze shoulder blades</div></div>
+          <div class="ex-sets">4 × 8–10</div>
+        </div>
+        <div class="exercise">
+          <div><div class="ex-name">Incline Dumbbell Press</div><div class="ex-note">30–45° bench, targets upper chest</div></div>
+          <div class="ex-sets">3 × 10–12</div>
+        </div>
+        <div class="exercise">
+          <div><div class="ex-name">Lat Pulldown</div><div class="ex-note">Pull to upper chest, lean back slightly, full stretch at top</div></div>
+          <div class="ex-sets">3 × 10–12</div>
+        </div>
+        <div class="exercise">
+          <div><div class="ex-name">Cable Chest Fly or Dumbbell Fly</div><div class="ex-note">Wide arc, slight bend in elbows, feel the stretch</div></div>
+          <div class="ex-sets">3 × 12–15</div>
+        </div>
+        <div class="exercise">
+          <div><div class="ex-name">Seated Cable Row</div><div class="ex-note">Chest up, elbows close to body, full contraction</div></div>
+          <div class="ex-sets">3 × 12</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Full-Body Finisher</div>
+      <div class="exercises">
+        <div class="exercise">
+          <div><div class="ex-name">Romanian Deadlift</div><div class="ex-note">Light carry-over from leg day, keeps posterior chain active</div></div>
+          <div class="ex-sets">2 × 12</div>
+        </div>
+        <div class="exercise">
+          <div><div class="ex-name">Dead Bug</div><div class="ex-note">Core anti-extension — opposite arm/leg, slow</div></div>
+          <div class="ex-sets">3 × 10 each</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box">
+      <strong>Tip:</strong> Pair bench press with barbell rows (alternating sets). This saves time and keeps the chest/back balanced so your posture doesn't suffer over time.
+    </div>
+  </div>
+
+</div>
+
+<footer>Rest 1–2 days between sessions &nbsp;·&nbsp; Sleep 7–9h &nbsp;·&nbsp; Eat enough protein</footer>
+
+</body>
+</html>
